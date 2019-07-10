@@ -77,7 +77,8 @@ def virus_model(csv_path):
     virus_data_rough = virus_data_rough.dropna()
     virus_data_rough = virus_data_rough[(virus_data_rough.total_yield != 0)]
 
-    # Select columns to be used for X_data, reindex, and convert to an array
+    # Select columns to be used for X_data, reindex, and convert to an array.
+    # NOTE: the dataset is not large enough (~200 preps) to allow for a standard train/CV/test split.  Only train data.
     X_data = virus_data_rough.drop(['plasmid_name', 'plasmid_id', 'serotype', 'team', 'status', 'final_titer', 'su',
                                     'total_yield', 'vessel'], 1)
     X_data = X_data.reset_index(drop=True)
